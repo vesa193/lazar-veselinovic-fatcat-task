@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 
 import { Card } from './Card';
+import { List } from '../List';
 
 // eslint-disable-next-line no-undef
 const vscodeProjectLink = `vscode://file/${__CWD__}`;
@@ -113,6 +114,7 @@ export const Landing = () => {
                     <Card key={card.title} {...card} />
                 ))}
             </div>
+            <List />
         </section>
     );
 };
