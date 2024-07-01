@@ -1,12 +1,16 @@
+import { Landing } from '@homework-task/components/landing/Landing';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import './styles.css';
 
-import { Landing } from '@homework-task/components/landing/Landing';
+const queryClient = new QueryClient();
 
 const App = () => {
     return (
-        <main>
-            <Landing />
-        </main>
+        <QueryClientProvider client={queryClient}>
+            <main>
+                <Landing />
+            </main>
+        </QueryClientProvider>
     );
 };
 

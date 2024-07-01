@@ -2,8 +2,6 @@ import clsx from 'clsx';
 
 import { Card } from './Card';
 
-const __CWD__ = process.cwd();
-
 // eslint-disable-next-line no-undef
 const vscodeProjectLink = `vscode://file/${__CWD__}`;
 
