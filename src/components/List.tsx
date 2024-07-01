@@ -2,7 +2,11 @@ import { useUserList } from '@homework-task/hooks/useUserList';
 import clsx from 'clsx';
 
 export const List = () => {
-    const { userList } = useUserList();
+    const { data: userList, isLoading, error } = useUserList();
+
+    if (isLoading) return <p>Loading content ...</p>;
+
+    if (error) return <p>{error}</p>;
 
     return (
         <ul
