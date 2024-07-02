@@ -32,14 +32,14 @@ export const CreatePostForm: React.FC = () => {
                         id="title"
                         elementType="input"
                         register={register}
-                        label="Title"
+                        label="Title*"
                         helperText={errors.title && errors.title.message}
                     />
                     <TextField
                         id="body"
                         elementType="textarea"
                         register={register}
-                        label="Body"
+                        label="Body*"
                         helperText={errors.body && errors.body.message}
                     />
                 </>
