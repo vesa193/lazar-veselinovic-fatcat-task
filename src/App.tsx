@@ -1,4 +1,4 @@
-import { Landing } from '@homework-task/components/landing/Landing';
+import { Landing } from '@homework-task-components/landing/Landing';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './styles.css';
 
