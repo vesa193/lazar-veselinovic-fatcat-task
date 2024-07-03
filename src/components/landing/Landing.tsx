@@ -2,6 +2,9 @@ import clsx from 'clsx';
 
 import { List } from '@homework-task-components/List';
 import { CreatePostForm } from '@homework-task-components/form/CreatePostForm';
+import { DynamicLayout } from '../DynamicLayout';
+import { dynamicLayoutData } from '@homework-task/utils/dynamicLayoutData';
+import { Layout } from '../Layout';
 
 export const Landing = () => {
     return (
@@ -30,7 +33,6 @@ export const Landing = () => {
                 alt=""
             />
             <List />
-            <CreatePostForm />
         </section>
     );
 };
