@@ -1,8 +1,8 @@
+import { DynamicLayout } from '@homework-task-components/DynamicLayout';
 import { Landing } from '@homework-task-components/landing/Landing';
+import { dynamicLayoutData } from '@homework-task-utils/dynamicLayoutData';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './styles.css';
-import { DynamicLayout } from './components/DynamicLayout';
-import { dynamicLayoutData } from './utils/dynamicLayoutData';
 
 const queryClient = new QueryClient();
 

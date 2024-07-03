@@ -14,6 +14,7 @@ export default defineConfig({
                 __dirname,
                 './src/components'
             ),
+            '@homework-task-utils': path.resolve(__dirname, './src/utils'),
         },
     },
 });

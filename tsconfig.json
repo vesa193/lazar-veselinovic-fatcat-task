@@ -16,7 +16,8 @@
         "moduleResolution": "Node",
         "paths": {
             "@homework-task/*": ["./src/*"],
-            "@homework-task-components/*": ["./src/components/*"]
+            "@homework-task-components/*": ["./src/components/*"],
+            "@homework-task-utils/*": ["./src/utils/*"],
         },
         "resolveJsonModule": true,
         "isolatedModules": true,
