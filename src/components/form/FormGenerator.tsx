@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import clsx from 'clsx';
-import React from 'react';
+import React, { useState } from 'react';
 import {
     FieldErrors,
     FieldValues,
@@ -31,11 +31,14 @@ export const FormGenerator = <T extends FieldValues>({
     renderForm,
     successMessage,
 }: FormGeneratorProps<T>) => {
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
+
     const {
         register,
         handleSubmit,
         formState: { errors },
-        reset
+        reset,
     } = useForm<T>({
         resolver: zodResolver(validationSchema),
     });
@@ -43,13 +46,17 @@ export const FormGenerator = <T extends FieldValues>({
     const mutation = useMutation();
 
     const onSubmit: SubmitHandler<T> = (data) => {
+        setIsLoading(true);
         mutation.mutate(data, {
             onSuccess: () => {
+                setIsLoading(false);
                 reset();
                 if (successMessage) alert(successMessage);
             },
             onError: (error: any) => {
-                alert('An error occurred: ' + error.message);
+                setIsLoading(false);
+                setError(`An error occurred: ${error.message}`);
+                alert(`An error occurred: ${error.message}`);
             },
         });
     };
@@ -70,15 +77,19 @@ export const FormGenerator = <T extends FieldValues>({
                     'disabled:opacity-50',
                     'disabled:cursor-not-allowed'
                 )}
-                disabled={Object.keys(errors).length > 0}
+                disabled={Object.keys(errors).length > 0 || !!error || isLoading}
             >
-                Submit
+                {isLoading ? 'Loading' : 'Submit'}
             </button>
             {mutation.isLoading && <p>Loading...</p>}
             {mutation.isError && (
-                <p>Error: {(mutation.error as ErrorResponse).message}</p>
+                <p>Error: {(mutation.error as ErrorResponse).message || error}</p>
             )}
-            {!Object.keys(errors).length && mutation.isSuccess && <p className={clsx('text-emerald-500')}>Form submitted successfully!</p>}
+            {!Object.keys(errors).length && !error && mutation.isSuccess && (
+                <p className={clsx('text-emerald-500')}>
+                    Form submitted successfully!
+                </p>
+            )}
         </form>
     );
 };
